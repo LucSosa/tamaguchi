@@ -1,11 +1,5 @@
 // Definição das classes para as diferentes fases de desenvolvimento do personagem
-enum FaseDesenvolvimento {
-    Ovo = 'ovo',
-    Bebe = 'bebê',
-    Crianca = 'criança',
-    Adolescente = 'adolescente',
-    Adulto = 'adulto',
-  }
+import { FaseDesenvolvimento } from './enumPhase'
   
   // Definição da classe Personagem
   class Personagem {
@@ -19,7 +13,7 @@ enum FaseDesenvolvimento {
     constructor(nome: string, classe: string) {
       this.nome = nome;
       this.classe = classe;
-      this.fase = FaseDesenvolvimento.Ovo;
+      this.fase = FaseDesenvolvimento.OVO;
       this.saude = 100; // 100 representa saúde total
       this.tempoVida = 0;
       this.doente = false;
@@ -39,17 +33,17 @@ enum FaseDesenvolvimento {
       if (!this.doente) {
         // Se o personagem não estiver doente, ele envelhece
         switch (this.fase) {
-          case FaseDesenvolvimento.Ovo:
-            this.fase = FaseDesenvolvimento.Bebe;
+          case FaseDesenvolvimento.OVO:
+            this.fase = FaseDesenvolvimento.BEBE;
             break;
-          case FaseDesenvolvimento.Bebe:
-            this.fase = FaseDesenvolvimento.Crianca;
+          case FaseDesenvolvimento.BEBE:
+            this.fase = FaseDesenvolvimento.CRIANCA;
             break;
-          case FaseDesenvolvimento.Crianca:
-            this.fase = FaseDesenvolvimento.Adolescente;
+          case FaseDesenvolvimento.CRIANCA:
+            this.fase = FaseDesenvolvimento.ADOLESCENTE;
             break;
-          case FaseDesenvolvimento.Adolescente:
-            this.fase = FaseDesenvolvimento.Adulto;
+          case FaseDesenvolvimento.ADOLESCENTE:
+            this.fase = FaseDesenvolvimento.ADULTO;
             break;
           default:
             break;
@@ -69,7 +63,7 @@ enum FaseDesenvolvimento {
   
     // Método para verificar se o personagem está vivo
     verificarVivo() {
-      return this.saude > 0 && this.fase !== FaseDesenvolvimento.Adulto;
+      return this.saude > 0 && this.fase !== FaseDesenvolvimento.ADULTO;
     }
   
     // Método para cuidar da higiene do personagem
