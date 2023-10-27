@@ -2,13 +2,13 @@
 import { FaseDesenvolvimento } from './enumPhase'
   
   // Definição da classe Personagem
-  class Personagem {
-    nome: string;
-    classe: string;
-    fase: FaseDesenvolvimento;
-    saude: number;
-    tempoVida: number;
-    doente: boolean;
+export default class Personagem {
+    private nome: string;
+    private classe: string;
+    private fase: FaseDesenvolvimento;
+    private saude: number;
+    private tempoVida: number;
+    private doente: boolean;
   
     constructor(nome: string, classe: string) {
       this.nome = nome;
@@ -114,32 +114,25 @@ import { FaseDesenvolvimento } from './enumPhase'
         console.log(`${this.nome} envelheceu um pouco.`);
       }
     }
+
+    welcomeMessage(){
+      console.log(`Você escolheu ${this.nome}, um ${this.classe}.`);
+      console.log(`${this.nome} está na fase de ${this.fase}.`);
+    }
   }
   
-  // Exemplo de uso
-  const personagem = new Personagem("Meu Pet", "Gato");
-  console.log(`Você escolheu ${personagem.nome}, um ${personagem.classe}.`);
-  console.log(`${personagem.nome} está na fase de ${personagem.fase}.`);
-  
   // Simulando o passar do tempo
-  setInterval(() => {
-    personagem.passarTempo();
-    if (!personagem.verificarSaude()) {
-      console.log(`${personagem.nome} ficou doente!`);
-      personagem.doente = true;
-    }
-    if (!personagem.verificarVivo()) {
-      console.log(`${personagem.nome} morreu.`);
-    //   clearInterval();
-    }
-  }, 5000); // A cada 5 segundos
+  // setInterval(() => {
+  //   personagem.passarTempo();
+  //   if (!personagem.verificarSaude()) {
+  //     console.log(`${personagem.nome} ficou doente!`);
+  //     personagem.doente = true;
+  //   }
+  //   if (!personagem.verificarVivo()) {
+  //     console.log(`${personagem.nome} morreu.`);
+  //   //   clearInterval();
+  //   }
+  // }, 5000); // A cada 5 segundos
   
-  // Exemplos de interações com o personagem
-  personagem.cuidarHigiene();
-  personagem.brincar();
-  personagem.alimentar();
-  personagem.dormir();
-  personagem.darCarinho();
-  personagem.envelhecer();
-  personagem.tratarDoenca();
+
   
