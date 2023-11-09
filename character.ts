@@ -1,5 +1,8 @@
 // Definição das classes para as diferentes fases de desenvolvimento do personagem
+import { Util } from './Utils';
 import { FaseDesenvolvimento } from './enumPhase'
+
+const CHANCE_DE_ENVELHECER = 70
   
   // Definição da classe Personagem
 export default class Personagem {
@@ -29,30 +32,32 @@ export default class Personagem {
     }
   
     // Método para envelhecer o personagem
-    envelhecer() {
-      if (!this.doente) {
+    envelhecer(podeEnvelhecer: Boolean) {
+      if (podeEnvelhecer) {
+        if (!this.doente) {
         // Se o personagem não estiver doente, ele envelhece
-        switch (this.fase) {
-          case FaseDesenvolvimento.OVO:
-            this.fase = FaseDesenvolvimento.BEBE;
-            break;
-          case FaseDesenvolvimento.BEBE:
-            this.fase = FaseDesenvolvimento.CRIANCA;
-            break;
-          case FaseDesenvolvimento.CRIANCA:
-            this.fase = FaseDesenvolvimento.ADOLESCENTE;
-            break;
-          case FaseDesenvolvimento.ADOLESCENTE:
-            this.fase = FaseDesenvolvimento.ADULTO;
-            break;
-          default:
-            break;
+          switch (this.fase) {
+            case FaseDesenvolvimento.OVO:
+              this.fase = FaseDesenvolvimento.BEBE;
+              break;
+            case FaseDesenvolvimento.BEBE:
+              this.fase = FaseDesenvolvimento.CRIANCA;
+              break;
+            case FaseDesenvolvimento.CRIANCA:
+              this.fase = FaseDesenvolvimento.ADOLESCENTE;
+              break;
+            case FaseDesenvolvimento.ADOLESCENTE:
+              this.fase = FaseDesenvolvimento.ADULTO;
+              break;
+            default:
+              break;
+          }
+    
+          this.tempoVida += 1;
+          console.log(`${this.nome} cresceu e agora é um ${this.fase}.`);
+        } else {
+          console.log(`${this.nome} está doente e não pode envelhecer.`);
         }
-  
-        this.tempoVida += 1;
-        console.log(`${this.nome} cresceu e agora é um ${this.fase}.`);
-      } else {
-        console.log(`${this.nome} está doente e não pode envelhecer.`);
       }
     }
   
@@ -96,6 +101,11 @@ export default class Personagem {
         this.saude += 20;
         console.log(`${this.nome} dormiu bem e está cheio de energia.`);
       }
+
+      const envelhece = Util.randomizar(0, 100)
+      const verificaSePodeFicarMaisVelho = envelhece > CHANCE_DE_ENVELHECER
+
+      this.envelhecer(verificaSePodeFicarMaisVelho)
     }
   
     // Método para demonstrar carinho ao personagem
