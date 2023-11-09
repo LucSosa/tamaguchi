@@ -4,4 +4,6 @@ export enum FaseDesenvolvimento {
     CRIANCA = 'criança',
     ADOLESCENTE = 'adolescente',
     ADULTO = 'adulto',
+    VELHO = 'vozinho',
+    MORREU = 'faleceu'
   }

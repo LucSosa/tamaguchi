@@ -8,7 +8,7 @@ let continua = true
 const personagem = new Personagem("Bolinho", "Cenoura");
 personagem.welcomeMessage()
 
-while (continua) {
+while (continua && !personagem.verificaSaude()) {
     console.log('|================= MENU =================|');
     console.log('| 0. Alimentar                           |');
     console.log('| 1. Brincar                             |');
@@ -16,7 +16,7 @@ while (continua) {
     console.log('| 3. Cuidar da Higiene                   |');
     console.log('| 4. Dar Carinho                         |');
     console.log('| 5. Tratar Doença                       |');
-    console.log('| 6. Envelhecer                          |');
+    console.log('|                                        |');
     console.log('| 9. Sair                                |');
     console.log('|========================================|');
     
