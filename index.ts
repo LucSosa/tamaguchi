@@ -1,14 +1,18 @@
-import  Prompt  from "prompt-sync"
+import Prompt from "prompt-sync"
 
 import Personagem from "./character";
+import { TamagotchiAventureiro } from "./typesOfTamaguchi/adventurous";
 
 const teclado = Prompt()
 let continua = true
 
 const personagem = new Personagem("Bolinho", "Cenoura");
+const aventureiro = new TamagotchiAventureiro("Aventureiro")
+
+
 personagem.welcomeMessage()
 
-while (continua && !personagem.verificaSaude()) {
+while (continua && !aventureiro.verificaSaude()) {
     console.log('|================= MENU =================|');
     console.log('| 0. Alimentar                           |');
     console.log('| 1. Brincar                             |');
@@ -19,43 +23,43 @@ while (continua && !personagem.verificaSaude()) {
     console.log('|                                        |');
     console.log('| 9. Sair                                |');
     console.log('|========================================|');
-    
-    const opcao:number = +teclado('Escolha uma ação: ')
+
+    const opcao: number = +teclado('Escolha uma ação: ')
 
 
-switch (opcao) {
-    case 0:
-        personagem.alimentar()
-        break;
-    case 1:
-        personagem.brincar()
-        break;
-    case 2:
-        personagem.dormir()
-        break;
-    case 3:
-        personagem.cuidarHigiene()
-        break;
-    case 4:
-        personagem.darCarinho()
-        break;
-    case 5:
-        personagem.tratarDoenca()
-        break;
-    case 6:
-        // personagem.envelhecer()
-        break
-    
-    case 9:
-        continua = false
-        break;
-    default:
-        break;
+    switch (opcao) {
+        case 0:
+            personagem.alimentar()
+            break;
+        case 1:
+            personagem.brincar()
+            break;
+        case 2:
+            personagem.dormir()
+            break;
+        case 3:
+            personagem.cuidarHigiene()
+            break;
+        case 4:
+            personagem.darCarinho()
+            break;
+        case 5:
+            personagem.tratarDoenca()
+            break;
+        case 6:
+            // personagem.envelhecer()
+            break
+
+        case 9:
+            continua = false
+            break;
+        default:
+            break;
     }
 
 }
 
-  // Exemplos de interações com o personagem
+// Exemplos de interações com o personagem
 //   personagem.cuidarHigiene();
 //   personagem.brincar();
 //   personagem.alimentar();
