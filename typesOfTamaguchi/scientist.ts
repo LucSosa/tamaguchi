@@ -1,10 +1,10 @@
 import Personagem from "../character";
 
 interface AventureiroProps {
-    realizarAtividadeAventura(): void
+    realizarAtividadeCientifica(): void
     mostrarStatusAventureiro(): void
 }
-export class TamagotchiAventureiro extends Personagem implements AventureiroProps {
+export class TamagotchiCientista extends Personagem implements AventureiroProps {
     private nivelExperiencia: number;
 
     constructor(nome: string) {
@@ -13,11 +13,11 @@ export class TamagotchiAventureiro extends Personagem implements AventureiroProp
     }
 
     // Método específico para o Tamagotchi Aventureiro
-    realizarAtividadeAventura() {
+    realizarAtividadeCientifica() {
         if (this.verificarVivo()) {
             this.saude -= 5;
             this.nivelExperiencia += 10;
-            console.log(`${this.nome} realizou uma atividade de aventura e ganhou experiência.`);
+            console.log(`${this.nome} realizou um experimento e ganhou experiência.`);
             this.passarTempo();
             this.verificarSaude();
         }
@@ -26,8 +26,8 @@ export class TamagotchiAventureiro extends Personagem implements AventureiroProp
     // Sobrescreve o método da classe pai para adicionar um comportamento específico
     brincar() {
         super.brincar(); // Chama o método da classe pai
-        console.log(`${this.nome} brincou de explorar novos lugares.`);
-        this.realizarAtividadeAventura();
+        console.log(`${this.nome} realizou um experimento.`);
+        this.realizarAtividadeCientifica();
     }
 
     // Método específico para o Tamagotchi Aventureiro

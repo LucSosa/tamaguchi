@@ -1,7 +1,8 @@
-// Definição das classes para as diferentes fases de desenvolvimento do personagem
-import { Util } from './Utils';
-import { FaseDesenvolvimento } from './enumPhase'
-import { CHANCE_DE_ENVELHECER, COMEU_DEMAIS, FICOU_DOENTE } from './enumLife';
+import { Util } from './utils/Utils';
+
+
+import { FaseDesenvolvimento } from './enums/enumPhase';
+import { CHANCE_DE_ENVELHECER, COMEU_DEMAIS, FICOU_DOENTE } from './enums/enumLife';
 
 
 // Definição da classe Personagem
@@ -51,10 +52,12 @@ export default class Personagem {
           case FaseDesenvolvimento.ADOLESCENTE:
             this.fase = FaseDesenvolvimento.ADULTO;
             break;
-          case FaseDesenvolvimento.VELHO:
+          case FaseDesenvolvimento.ADULTO:
             this.fase = FaseDesenvolvimento.VELHO;
-          case FaseDesenvolvimento.MORREU:
-            this.fase = FaseDesenvolvimento.MORREU
+            break;
+          case FaseDesenvolvimento.VELHO:
+            this.fase = FaseDesenvolvimento.MORREU;
+            break;
           default:
             break;
         }
@@ -76,7 +79,7 @@ export default class Personagem {
 
     if (saudavel) {
       console.log(`${this.nome} está saudável, sua saúde é de ${this.saude}`);
-    } else {  // Retirar saúde do log
+    } else {
       this.doente = true
       console.log(`${this.nome} está doente, faça a tratamento da doença!`);
     }
@@ -84,7 +87,7 @@ export default class Personagem {
 
   // Método para verificar se o personagem está vivo
   verificarVivo() {
-    return this.verificaSaude() && this.fase !== FaseDesenvolvimento.ADULTO;
+    return this.verificaSaude() && this.fase !== FaseDesenvolvimento.MORREU;
   }
 
   verificaSaude() {
@@ -109,9 +112,10 @@ export default class Personagem {
 
   // Método para alimentar o personagem
   alimentar() {
-    if (this.verificarVivo()) {
+    if (!this.verificarVivo()) {
       this.saude += 15;
       this.fome += 20;
+
       if (this.fome < COMEU_DEMAIS) {
         console.log(`${this.nome} se alimentou e está mais saudável.`);
       } else {
@@ -150,7 +154,10 @@ export default class Personagem {
   passarTempo() {
     this.tempoVida += 1;
     this.saude -= 5; // A saúde diminui com o tempo
-    console.log(`${this.nome} envelheceu um pouco.`);
+
+    if (this.saude > FICOU_DOENTE) {
+      console.log(`${this.nome} envelheceu um pouco.`);
+    }
   }
 
   welcomeMessage() {

@@ -1,18 +1,30 @@
 import Prompt from "prompt-sync"
 
-import Personagem from "./character";
 import { TamagotchiAventureiro } from "./typesOfTamaguchi/adventurous";
+import { TamagotchiCientista } from "./typesOfTamaguchi/scientist";
 
 const teclado = Prompt()
 let continua = true
 
-const personagem = new Personagem("Bolinho", "Cenoura");
-const aventureiro = new TamagotchiAventureiro("Aventureiro")
+console.log('Bem-Vindo ao terminal Tamaguchi, seu bichinho virtual :D');
+const name: string = teclado('Escolha o nome do seu Tamaguchi: ')
 
+console.log('|================= RAÇAS ================|');
+console.log('| 0. Aventureiro                         |');
+console.log('| 1. Cientista                           |');
+console.log('| 2. xxxxxxxx                            |');
+console.log('| 3. xxxxxxxx                            |');
+console.log('|                                        |');
+console.log('| 9. Sair                                |');
+console.log('|========================================|');
+const opcaoRace: number = +teclado('Escolha uma raça: ')
 
-personagem.welcomeMessage()
+const aventureiro = new TamagotchiAventureiro(name)
+const cientista = new TamagotchiCientista(name)
 
-while (continua && !aventureiro.verificaSaude()) {
+const race = [aventureiro, cientista]
+
+while (continua || race[opcaoRace].verificaSaude()) {
     console.log('|================= MENU =================|');
     console.log('| 0. Alimentar                           |');
     console.log('| 1. Brincar                             |');
@@ -29,27 +41,29 @@ while (continua && !aventureiro.verificaSaude()) {
 
     switch (opcao) {
         case 0:
-            personagem.alimentar()
+            race[opcaoRace].alimentar()
             break;
         case 1:
-            personagem.brincar()
+            race[opcaoRace].brincar()
             break;
         case 2:
-            personagem.dormir()
+            race[opcaoRace].dormir()
             break;
         case 3:
-            personagem.cuidarHigiene()
+            race[opcaoRace].cuidarHigiene()
             break;
         case 4:
-            personagem.darCarinho()
+            race[opcaoRace].darCarinho()
             break;
         case 5:
-            personagem.tratarDoenca()
+            race[opcaoRace].tratarDoenca()
             break;
         case 6:
-            // personagem.envelhecer()
-            break
 
+            break
+        case 7:
+
+            break
         case 9:
             continua = false
             break;
