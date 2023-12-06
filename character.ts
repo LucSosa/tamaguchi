@@ -21,10 +21,11 @@ export default class Personagem {
     this.doente = false;
     this.fome = 20; // A ideia é ir até 100, caso passe começará a ficar doente
   }
+
   tratarDoenca(): void {
     if (this.doente) {
       this.doente = false;
-      this.saude = 100; // Recupera a saúde total após o tratamento
+      this.saude = 100;
       console.log(`${this.nome} foi tratado e está saudável novamente.`);
     } else {
       console.log(`${this.nome} não está doente. Escolha outra ação.`)
@@ -147,5 +148,3 @@ export default class Personagem {
     console.log('')
   }
 }
-
-

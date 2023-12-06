@@ -62,9 +62,6 @@ while (continua || race[opcaoRace].verificarVivo()) {
         case 6:
             race[opcaoRace].mostrarStatus()
             break
-        case 7:
-
-            break
         case 9:
             continua = false
             break;

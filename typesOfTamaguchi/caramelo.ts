@@ -42,6 +42,3 @@ export class TamagotchiCaramelo extends Personagem implements CarameloProps {
         this.mostrarStatusCaramelo();
     }
 }
-
-
-
