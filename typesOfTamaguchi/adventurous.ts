@@ -12,25 +12,22 @@ export class TamagotchiAventureiro extends Personagem implements AventureiroProp
         this.nivelExperiencia = 0;
     }
 
-    // Método específico para o Tamagotchi Aventureiro
-    realizarAtividadeAventura() {
+    realizarAtividadeAventura(): void {
         this.saude -= 5;
         this.nivelExperiencia += 10;
         console.log(`${this.nome} realizou uma atividade de aventura e ganhou experiência.`);
     }
 
-    // Sobrescreve o método da classe pai para adicionar um comportamento específico
-    brincar() {
+    brincar(): void {
         super.brincar();
         this.realizarAtividadeAventura();
     }
 
-    // Método específico para o Tamagotchi Aventureiro
-    mostrarStatusAventureiro() {
+    mostrarStatusAventureiro(): void {
         console.log(`${this.nome} é um Aventureiro de nível ${this.nivelExperiencia}.`);
     }
 
-    mostrarStatus() {
+    mostrarStatus(): void {
         super.mostrarStatus()
         this.mostrarStatusAventureiro()
     }

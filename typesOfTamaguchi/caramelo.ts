@@ -14,18 +14,18 @@ export class TamagotchiCaramelo extends Personagem implements CarameloProps {
         this.nivelExperiencia = 0;
     }
 
-    correrAtrasDeMoto() {
+    correrAtrasDeMoto(): void {
         this.saude -= 10;
         this.nivelExperiencia += 10;
         console.log(`${this.nome} correu atrás de uma moto e ganhou experiência.`);
     }
 
-    brincar() {
+    brincar(): void {
         super.brincar();
         this.correrAtrasDeMoto();
     }
 
-    darCarinho() {
+    darCarinho(): void {
         console.log(`${this.nome} não gosta de carinho`)
     }
 
@@ -33,11 +33,11 @@ export class TamagotchiCaramelo extends Personagem implements CarameloProps {
         console.log(`A raça caramelo não precisa de tratamento higienico`);
     }
 
-    mostrarStatusCaramelo() {
+    mostrarStatusCaramelo(): void {
         console.log(`${this.nome} é um Caramelo de nível ${this.nivelExperiencia}.`)
     }
 
-    mostrarStatus() {
+    mostrarStatus(): void {
         super.mostrarStatus();
         this.mostrarStatusCaramelo();
     }

@@ -11,24 +11,19 @@ export class TamagotchiCientista extends Personagem implements AventureiroProps 
         super(nome, "Aventureiro");
         this.nivelExperiencia = 0;
     }
-    mostrarStatusAventureiro(): void {
-        throw new Error("Method not implemented.");
-    }
-
-    realizarAtividadeCientifica() {
+    realizarAtividadeCientifica(): void {
         this.saude -= 5;
         this.nivelExperiencia += 10;
         console.log(`${this.nome} realizou um experimento e ganhou experiência.`);
 
     }
 
-    // Sobrescreve o método da classe pai para adicionar um comportamento específico
-    brincar() {
+    brincar(): void {
         super.brincar();
         this.realizarAtividadeCientifica();
     }
 
-    mostrarStatusCientista() {
+    mostrarStatusCientista(): void {
         console.log(`${this.nome} é um Aventureiro de nível ${this.nivelExperiencia}.`);
     }
 

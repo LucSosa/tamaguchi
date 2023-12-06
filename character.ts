@@ -1,11 +1,8 @@
 import { Util } from './utils/Utils';
 
-
 import { FaseDesenvolvimento } from './enums/enumPhase';
 import { CHANCE_DE_ENVELHECER, COMEU_DEMAIS, FICOU_DOENTE } from './enums/enumLife';
 
-
-// Definição da classe Personagem
 export default class Personagem {
   protected nome: string;
   protected classe: string;
@@ -24,9 +21,7 @@ export default class Personagem {
     this.doente = false;
     this.fome = 20; // A ideia é ir até 100, caso passe começará a ficar doente
   }
-
-  // Método para tratar a doença do personagem
-  tratarDoenca() {
+  tratarDoenca(): void {
     if (this.doente) {
       this.doente = false;
       this.saude = 100; // Recupera a saúde total após o tratamento
@@ -36,11 +31,9 @@ export default class Personagem {
     }
   }
 
-  // Método para envelhecer o personagem
-  envelhecer(podeEnvelhecer: Boolean) {
+  envelhecer(podeEnvelhecer: Boolean): void {
     if (podeEnvelhecer) {
       if (!this.doente) {
-        // Se o personagem não estiver doente, ele envelhece
         switch (this.fase) {
           case FaseDesenvolvimento.OVO:
             this.fase = FaseDesenvolvimento.BEBE;
@@ -72,8 +65,7 @@ export default class Personagem {
     }
   }
 
-  // Método para verificar se o personagem está saudável
-  verificarSaude() {
+  verificarSaude(): void {
     if (this.verificaSaude())
       return console.log(`${this.nome} faleceu! :(`)
 
@@ -87,31 +79,27 @@ export default class Personagem {
     }
   }
 
-  // Método para verificar se o personagem está vivo
-  verificarVivo() {
+  verificarVivo(): boolean {
     return this.verificaSaude() && this.fase !== FaseDesenvolvimento.MORREU;
   }
 
-  verificaSaude() {
+  verificaSaude(): boolean {
     return this.saude <= 0
   }
 
-  // Método para cuidar da higiene do personagem
-  cuidarHigiene() {
+  cuidarHigiene(): void {
     this.saude += 10;
     console.log(`${this.nome} está mais limpo e saudável.`);
   }
 
-  // Método para brincar com o personagem
-  brincar() {
+  brincar(): void {
     if (this.verificarVivo()) {
       this.saude += 5;
       console.log(`${this.nome} se divertiu brincando.`);
     }
   }
 
-  // Método para alimentar o personagem
-  alimentar() {
+  alimentar(): void {
     if (!this.verificarVivo()) {
       this.saude += 15;
       this.fome += 20;
@@ -125,11 +113,8 @@ export default class Personagem {
     }
   }
 
-  // Método para permitir que o personagem durma
-  dormir() {
+  dormir(): void {
     if (this.verificarVivo()) {
-      // this.saude += 20;
-      //  console.log(`${this.nome} dormiu bem e está cheio de energia.`);
       console.log(`${this.nome} dormiu bem.`);
     }
 
@@ -142,45 +127,25 @@ export default class Personagem {
     this.verificarSaude()
   }
 
-  // Método para demonstrar carinho ao personagem
-  darCarinho() {
+  darCarinho(): void {
     if (this.verificarVivo()) {
       this.saude += 5;
       console.log(`${this.nome} se sente amado e feliz.`);
     }
   }
 
-  // Método para simular o passar do tempo
-  passarTempo() {
+  passarTempo(): void {
     this.tempoVida += 1;
-    this.saude -= 5; // A saúde diminui com o tempo
+    this.saude -= 5;
 
     if (this.saude > FICOU_DOENTE) {
       console.log(`${this.nome} envelheceu um pouco.`);
     }
   }
 
-  mostrarStatus() {
+  mostrarStatus(): void {
     console.log('')
   }
-
-  welcomeMessage() {
-    console.log(`Você escolheu ${this.nome}, um ${this.classe}.`);
-    console.log(`${this.nome} está na fase de ${this.fase}.`);
-  }
 }
-
-// Simulando o passar do tempo
-// setInterval(() => {
-//   personagem.passarTempo();
-//   if (!personagem.verificarSaude()) {
-//     console.log(`${personagem.nome} ficou doente!`);
-//     personagem.doente = true;
-//   }
-//   if (!personagem.verificarVivo()) {
-//     console.log(`${personagem.nome} morreu.`);
-//   //   clearInterval();
-//   }
-// }, 5000); // A cada 5 segundos
 
 
