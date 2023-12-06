@@ -160,6 +160,10 @@ export default class Personagem {
     }
   }
 
+  mostrarStatus() {
+    console.log('')
+  }
+
   welcomeMessage() {
     console.log(`Você escolheu ${this.nome}, um ${this.classe}.`);
     console.log(`${this.nome} está na fase de ${this.fase}.`);

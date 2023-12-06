@@ -2,7 +2,7 @@ import Personagem from "../character";
 
 interface AventureiroProps {
     realizarAtividadeCientifica(): void
-    mostrarStatusAventureiro(): void
+    mostrarStatus(): void
 }
 export class TamagotchiCientista extends Personagem implements AventureiroProps {
     private nivelExperiencia: number;
@@ -10,6 +10,9 @@ export class TamagotchiCientista extends Personagem implements AventureiroProps 
     constructor(nome: string) {
         super(nome, "Aventureiro");
         this.nivelExperiencia = 0;
+    }
+    mostrarStatusAventureiro(): void {
+        throw new Error("Method not implemented.");
     }
 
     // Método específico para o Tamagotchi Aventureiro
@@ -31,7 +34,12 @@ export class TamagotchiCientista extends Personagem implements AventureiroProps 
     }
 
     // Método específico para o Tamagotchi Aventureiro
-    mostrarStatusAventureiro() {
+    mostrarStatusCientista() {
         console.log(`${this.nome} é um Aventureiro de nível ${this.nivelExperiencia}.`);
+    }
+
+    mostrarStatus(): void {
+        super.mostrarStatus()
+        this.mostrarStatusCientista()
     }
 }
