@@ -1,11 +1,10 @@
 import Personagem from "../character"
+import { CharProps } from "./interfaceChar";
 
 interface CarameloProps {
     correrAtrasDeMoto(): void
-    mostrarStatusCaramelo(): void
 }
-
-export class TamagotchiCaramelo extends Personagem implements CarameloProps {
+export class TamagotchiCaramelo extends Personagem implements CarameloProps, CharProps {
     private nivelExperiencia: number;
 
     constructor(nome: string) {

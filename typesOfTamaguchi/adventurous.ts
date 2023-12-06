@@ -1,10 +1,10 @@
 import Personagem from "../character";
+import { CharProps } from "./interfaceChar";
 
 interface AventureiroProps {
     realizarAtividadeAventura(): void
-    mostrarStatus(): void
 }
-export class TamagotchiAventureiro extends Personagem implements AventureiroProps {
+export class TamagotchiAventureiro extends Personagem implements AventureiroProps, CharProps {
     private nivelExperiencia: number;
 
     constructor(nome: string) {
