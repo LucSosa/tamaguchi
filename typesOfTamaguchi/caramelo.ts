@@ -10,25 +10,27 @@ export class TamagotchiCaramelo extends Personagem implements CarameloProps {
 
     constructor(nome: string) {
         super(nome, "Caramelo");
+        this.saude = 1000
         this.nivelExperiencia = 0;
     }
 
-    // Método específico para o Tamagotchi Caramelo
-    public correrAtrasDeMoto() {
-
-        if (this.verificarVivo()) {
-            this.saude -= 10;
-            this.nivelExperiencia += 10;
-            console.log(`${this.nome} correu atrás de uma moto e ganhou experiência.`);
-            this.passarTempo()
-            this.verificarSaude()
-        }
+    correrAtrasDeMoto() {
+        this.saude -= 10;
+        this.nivelExperiencia += 10;
+        console.log(`${this.nome} correu atrás de uma moto e ganhou experiência.`);
     }
 
-    // Sobrescreve o método da classe pai para adicionar um comportamento específico
     brincar() {
         super.brincar();
         this.correrAtrasDeMoto();
+    }
+
+    darCarinho() {
+        console.log(`${this.nome} não gosta de carinho`)
+    }
+
+    cuidarHigiene(): void {
+        console.log(`A raça caramelo não precisa de tratamento higienico`);
     }
 
     mostrarStatusCaramelo() {

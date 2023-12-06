@@ -31,6 +31,8 @@ export default class Personagem {
       this.doente = false;
       this.saude = 100; // Recupera a saúde total após o tratamento
       console.log(`${this.nome} foi tratado e está saudável novamente.`);
+    } else {
+      console.log(`${this.nome} não está doente. Escolha outra ação.`)
     }
   }
 
@@ -96,10 +98,8 @@ export default class Personagem {
 
   // Método para cuidar da higiene do personagem
   cuidarHigiene() {
-    if (this.verificarVivo()) {
-      this.saude += 10;
-      console.log(`${this.nome} está mais limpo e saudável.`);
-    }
+    this.saude += 10;
+    console.log(`${this.nome} está mais limpo e saudável.`);
   }
 
   // Método para brincar com o personagem

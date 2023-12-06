@@ -25,7 +25,7 @@ const caramelo = new TamagotchiCaramelo(name)
 
 const race = [aventureiro, cientista, caramelo]
 
-while (continua || race[opcaoRace].verificaSaude()) {
+while (continua || race[opcaoRace].verificarVivo()) {
     console.log('|================= MENU =================|');
     console.log('| 0. Alimentar                           |');
     console.log('| 1. Brincar                             |');
@@ -73,12 +73,3 @@ while (continua || race[opcaoRace].verificaSaude()) {
     }
 
 }
-
-// Exemplos de interações com o personagem
-//   personagem.cuidarHigiene();
-//   personagem.brincar();
-//   personagem.alimentar();
-//   personagem.dormir();
-//   personagem.darCarinho();
-//   personagem.envelhecer();
-//   personagem.tratarDoenca();
